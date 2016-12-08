@@ -1,0 +1,22 @@
+---
+- name: change default session dir owner group
+  file:
+    path: "{{ fpm_pool_session_path }}"
+    group: "{{ fpm_group }}"
+    state: directory
+
+- name: change default log dir owner user
+  file:
+    path: "{{ fpm_pool_log_path }}"
+    owner: "{{ fpm_user }}"
+    state: directory
+
+- name: copy php-fpm main configure file
+  template:
+    src: php-fpm.conf.j2
+    dest: /etc/php-fpm.conf
+
+- name: copy php-fpm pool configure file
+  template:
+    src: www.conf.j2
+    dest: "/etc/php-fpm.d/{{ fpm_pool_name }}.conf"

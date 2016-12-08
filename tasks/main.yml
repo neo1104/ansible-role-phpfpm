@@ -1,0 +1,5 @@
+---
+# tasks file for roles/php-fpm
+- include: install.yml
+- include: configure.yml
+- include: service.yml

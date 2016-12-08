@@ -1,0 +1,20 @@
+---
+- name: install epel-release repo
+  yum:
+    name: epel-release
+    state: present
+    update_cache: yes
+
+- name: install php-fpm
+  yum:
+    name: php-fpm
+    state: present
+    update_cache: yes
+    enablerepo: epel
+
+- name: create php-fpm user and group
+  user:
+    name: "{{ fpm_user }}"
+    createhome: no
+    shell: /bin/nologin
+    state: present

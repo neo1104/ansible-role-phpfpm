@@ -1,0 +1,6 @@
+---
+# handlers file for roles/php-fpm
+- name: restart php-fpm service
+  service:
+    name: php-fpm
+    state: restarted
