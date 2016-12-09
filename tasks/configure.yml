@@ -2,6 +2,7 @@
 - name: change default session dir owner group
   file:
     path: "{{ fpm_pool_session_path }}"
+    owner: "{{ fpm_user }}"
     group: "{{ fpm_group }}"
     state: directory
 
@@ -15,8 +16,12 @@
   template:
     src: php-fpm.conf.j2
     dest: /etc/php-fpm.conf
+  notify:
+    - name: restart php-fpm service
 
 - name: copy php-fpm pool configure file
   template:
     src: www.conf.j2
     dest: "/etc/php-fpm.d/{{ fpm_pool_name }}.conf"
+  notify:
+    - name: restart php-fpm service

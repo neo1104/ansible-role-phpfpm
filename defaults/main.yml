@@ -15,3 +15,9 @@ fpm_pool_session_path: /var/lib/php/session
 fpm_pool_log_path: /var/log/php-fpm
 fpm_pool_slow_log: "{{ fpm_pool_log_path }}/slow-{{ fpm_pool_name }}.log"
 fpm_pool_error_log: "{{ fpm_pool_log_path }}/{{ fpm_pool_name }}-error.log"
+
+php_memory_limit: 128M
+php_datezone: Asia/Shanghai
+php_max_execution_time: 300
+php_max_input_time: 300
+php_post_max_size: 16M
