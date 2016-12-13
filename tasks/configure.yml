@@ -17,11 +17,11 @@
     src: php-fpm.conf.j2
     dest: /etc/php-fpm.conf
   notify:
-    - name: restart php-fpm service
+    - restart php-fpm service
 
 - name: copy php-fpm pool configure file
   template:
     src: www.conf.j2
     dest: "/etc/php-fpm.d/{{ fpm_pool_name }}.conf"
   notify:
-    - name: restart php-fpm service
+    - restart php-fpm service
